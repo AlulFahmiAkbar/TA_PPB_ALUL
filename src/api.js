@@ -31,7 +31,12 @@ export const setUser = (u) => {
 
 export const rupiah = (n) => 'Rp ' + Number(n || 0).toLocaleString('id-ID')
 
-const defaultApiUrl = import.meta.env.VITE_API_URL || (import.meta.env.PROD ? '' : 'http://localhost:4000')
+const rawApiUrl = import.meta.env.VITE_API_URL || ''
+const isLocalhostInProd = import.meta.env.PROD && (rawApiUrl.includes('localhost') || rawApiUrl.includes('127.0.0.1'))
+const defaultApiUrl = isLocalhostInProd || !rawApiUrl
+  ? (import.meta.env.PROD ? '' : 'http://localhost:4000')
+  : rawApiUrl
+
 export const api = axios.create({ baseURL: defaultApiUrl + '/api/v1', timeout: 10000 })
 api.interceptors.request.use((c) => { const t = getToken(); if (t) c.headers.Authorization = 'Bearer ' + t; return c })
 api.interceptors.response.use((r) => r.data.data, (e) => {

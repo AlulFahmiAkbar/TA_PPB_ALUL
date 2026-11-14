@@ -27,9 +27,10 @@ const h = (fn) => (req, res) => fn(req, res).catch((e) => {
   return fail(res, 500, e.message || 'Internal Server Error')
 })
 const q = async (p) => { const { data, error } = await p; if (error) throw error; return data }
-const sign = (u) => jwt.sign({ id: u.id, role: u.role, name: u.name, email: u.email }, process.env.JWT_SECRET, { expiresIn: '7d' })
+const JWT_SECRET = process.env.JWT_SECRET || 'kostara_jwt_secret_rahasia_12345'
+const sign = (u) => jwt.sign({ id: u.id, role: u.role, name: u.name, email: u.email }, JWT_SECRET, { expiresIn: '7d' })
 const auth = (req, res, next) => {
-  try { req.user = jwt.verify((req.headers.authorization || '').slice(7), process.env.JWT_SECRET); next() }
+  try { req.user = jwt.verify((req.headers.authorization || '').slice(7), JWT_SECRET); next() }
   catch { fail(res, 401, 'Silakan login terlebih dahulu') }
 }
 const admin = (req, res, next) => (req.user.role === 'admin' ? next() : fail(res, 403, 'Hanya admin'))
