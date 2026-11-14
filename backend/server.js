@@ -233,4 +233,10 @@ r.post('/kos/:id/reviews', auth, h(async (req, res) => {
 
 app.get('/', (_, res) => res.json({ name: 'Kostara API', version: '1.0' }))
 app.use('/api/v1', r)
-app.listen(process.env.PORT || 4000, () => console.log('Kostara API ready'))
+
+if (!process.env.VERCEL) {
+  const PORT = process.env.PORT || 4000
+  app.listen(PORT, () => console.log(`Kostara API ready on port ${PORT}`))
+}
+
+export default app
