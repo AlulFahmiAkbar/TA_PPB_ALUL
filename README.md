@@ -8,23 +8,20 @@
 
 ```text
 kostara/
-├── backend/                # Server API (Node.js, Express, Supabase, JWT)
-│   ├── .env.example        # Template konfigurasi environment backend
-│   ├── package.json        # Dependensi backend
-│   ├── schema.sql          # Skema database Supabase / PostgreSQL
-│   └── server.js           # Entrypoint server backend
-├── frontend/               # Client Web App (React, Vite, PWA, Tailwind/CSS)
-│   ├── .env.example        # Template konfigurasi environment frontend
-│   ├── index.html          # HTML template
-│   ├── package.json        # Dependensi frontend
-│   ├── vite.config.js      # Konfigurasi Vite & PWA
-│   ├── public/             # Asset publik (favicon, icon PWA, manifest)
-│   └── src/                # Source code React (komponen, halaman, icons)
-├── scripts/                # Script utilitas otomasi
-│   └── dev.js              # Script runner paralel backend & frontend
+├── api/                    # Serverless API (Node.js, Express, Supabase, JWT)
+│   └── index.js            # Entrypoint API server
+├── public/                 # Asset publik (favicon, icon PWA, manifest)
+├── src/                    # Source code React (komponen, halaman, icons)
+├── scripts/                # Script utilitas otomasi (runner dev server)
+│   └── dev.js
+├── .env                    # [Aman / Terabaikan oleh Git] Kredensial lokal
 ├── .env.example            # Template master environment variables
 ├── .gitignore              # Daftar file/folder yang diabaikan Git
-└── package.json            # Script manajemen monorepo di root
+├── index.html              # HTML template
+├── package.json            # Dependensi utama proyek
+├── schema.sql              # Skema database Supabase / PostgreSQL
+├── vercel.json             # Konfigurasi routing Vercel
+└── vite.config.js          # Konfigurasi Vite & PWA
 ```
 
 ---
@@ -36,22 +33,13 @@ kostara/
 - [Git](https://git-scm.com/)
 
 ### 2. Instalasi Dependensi
-Jalankan instalasi dependensi untuk backend dan frontend:
+Cukup jalankan sekali di root:
 ```bash
-# Instal dependensi backend
-cd backend
 npm install
-
-# Instal dependensi frontend
-cd ../frontend
-npm install
-
-# Kembali ke folder root
-cd ..
 ```
 
 ### 3. Konfigurasi Environment (`.env`)
-Salin file `.env.example` menjadi `.env` di folder root (atau di masing-masing folder `backend/` dan `frontend/`):
+Salin file `.env.example` menjadi `.env`:
 ```bash
 cp .env.example .env
 ```
@@ -60,23 +48,32 @@ Sesuaikan nilai konfigurasi di dalam `.env`:
 - `SUPABASE_URL`: URL project Supabase Anda
 - `SUPABASE_SERVICE_KEY`: Service role secret key Supabase
 - `JWT_SECRET`: Kunci rahasia untuk tanda tangan token login JWT
-- `VITE_API_URL`: URL API yang diakses frontend (default: `http://localhost:4000`)
+- `VITE_API_URL`: URL API backend (default lokal: `http://localhost:4000`)
 
 ---
 
 ## 🛠️ Menjalankan Aplikasi
 
 ### Mode Pengembangan (Development)
-Menjalankan server backend (port 4000) dan frontend (port 5173) secara bersamaan:
+Menjalankan backend API dan Vite frontend secara bersamaan:
 ```bash
 npm run dev
 ```
 
 ### Mode Produksi (Production Build)
-Membuat build optimal untuk frontend:
 ```bash
 npm run build
 ```
 
-Hasil build akan berada di `frontend/dist/` dan siap dideploy ke platform hosting (Vercel, Netlify, VPS, dsb).
+---
 
+## ☁️ Deploy ke Vercel
+
+Proyek ini telah dikonfigurasi sebagai **Single Fullstack Project**:
+1. Hubungkan repository GitHub ke Vercel.
+2. Vercel akan otomatis mengenali proyek ini sebagai **Vite** di root (`./`).
+3. Tambahkan Environment Variables di Vercel:
+   - `SUPABASE_URL`
+   - `SUPABASE_SERVICE_KEY`
+   - `JWT_SECRET`
+4. Klik **Deploy** — Vercel akan otomatis mendeploy frontend dan API serverless dalam satu domain tanpa perlu konfigurasi tambahan!

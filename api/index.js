@@ -232,7 +232,10 @@ r.post('/kos/:id/reviews', auth, h(async (req, res) => {
 }))
 
 app.get('/', (_, res) => res.json({ name: 'Kostara API', version: '1.0' }))
+app.get('/api', (_, res) => res.json({ name: 'Kostara API', version: '1.0' }))
 app.use('/api/v1', r)
+app.use('/v1', r)
+app.use(r)
 
 if (!process.env.VERCEL) {
   const PORT = process.env.PORT || 4000

@@ -13,16 +13,16 @@ console.log('\x1b[32m%s\x1b[0m', '  Tekan Ctrl + C untuk menghentikan server    
 console.log('\x1b[32m%s\x1b[0m', '==================================================\n')
 
 const isWin = process.platform === 'win32'
-const npmCmd = isWin ? 'npm.cmd' : 'npm'
+const npxCmd = isWin ? 'npx.cmd' : 'npx'
 
-const backend = spawn(npmCmd, ['run', 'dev'], {
-  cwd: path.join(rootDir, 'backend'),
+const backend = spawn('node', ['--watch', 'api/index.js'], {
+  cwd: rootDir,
   stdio: 'inherit',
   shell: true
 })
 
-const frontend = spawn(npmCmd, ['run', 'dev'], {
-  cwd: path.join(rootDir, 'frontend'),
+const frontend = spawn(npxCmd, ['vite'], {
+  cwd: rootDir,
   stdio: 'inherit',
   shell: true
 })
@@ -45,4 +45,3 @@ const cleanExit = () => {
 process.on('SIGINT', cleanExit)
 process.on('SIGTERM', cleanExit)
 process.on('exit', cleanExit)
-
