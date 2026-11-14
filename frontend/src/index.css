@@ -1,0 +1,2936 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+html, body, :root {
+  color-scheme: light !important;
+}
+
+:root {
+  --figma-bg: #F4FBF4;
+  --figma-primary: #174D35;
+  --figma-primary-dark: #003521;
+  --figma-primary-deep: #002113;
+  --figma-primary-light: #B7EFCE;
+
+  --figma-surface: #FFFFFF;
+  --figma-surface-mint: #E8F0E9;
+  --figma-surface-mint-2: #E2EAE3;
+  --figma-surface-mint-3: #DAE5DD;
+
+  --figma-text-main: #161D19;
+  --figma-text-sub: #404943;
+  --figma-text-muted: #56615B;
+  --figma-text-placeholder: #717973;
+
+  --figma-amber: #F09F3C;
+  --figma-amber-light: #FFB869;
+  --figma-amber-soft: #FFDCBB;
+  --figma-amber-deep: #633A00;
+  --figma-amber-darkest: #2B1700;
+
+  --figma-red: #BA1A1A;
+  --figma-shadow-card: 0px 1px 2px rgba(0, 0, 0, 0.05);
+  --figma-shadow-elevated: 0px 4px 6px -1px rgba(0, 0, 0, 0.08), 0px 2px 4px -2px rgba(0, 0, 0, 0.06);
+  --figma-shadow-nav-top: 0px 1px 6px rgba(0, 0, 0, 0.04);
+  --figma-shadow-nav-bottom: 0px -2px 12px rgba(0, 0, 0, 0.05);
+
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  color: var(--figma-text-main);
+  background: var(--figma-bg);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #F5F5F5;
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  width: 100%;
+  max-width: 390px;
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  position: relative;
+  margin: 0 auto;
+}
+
+/* =================================================== */
+/* 390px Mobile PWA Container (Figma Spec)             */
+/* =================================================== */
+.figma-pwa-container {
+  width: 100%;
+  max-width: 390px;
+  min-height: 100vh;
+  margin: 0 auto;
+  background: var(--figma-bg);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  isolation: isolate;
+  box-shadow: 0 4px 30px rgba(0, 33, 19, 0.08);
+  border-left: 1px solid rgba(0, 33, 19, 0.06);
+  border-right: 1px solid rgba(0, 33, 19, 0.06);
+  overflow-x: hidden;
+}
+
+/* =================================================== */
+/* Header (56px, Glass, Figma Spec)                    */
+/* =================================================== */
+.figma-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  width: 100%;
+  height: 56px;
+  background: rgba(244, 251, 244, 0.92);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  box-shadow: var(--figma-shadow-nav-top);
+  border-bottom: 1px solid rgba(0, 33, 19, 0.06);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+}
+
+.header-left {
+  width: 36px;
+  display: flex;
+  align-items: center;
+}
+.header-left-placeholder {
+  width: 36px;
+  height: 32px;
+}
+
+.header-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  user-select: none;
+}
+.brand-title-figma {
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.8px;
+  color: var(--figma-primary);
+  line-height: 15px;
+}
+.brand-sub-figma {
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--figma-text-sub);
+  line-height: 12px;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 72px;
+  justify-content: flex-end;
+}
+
+.header-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.brand-icon-box {
+  font-size: 1.4rem;
+}
+
+.header-back-btn {
+  background: var(--figma-surface-mint);
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  color: var(--figma-primary);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.brand-text-col {
+  display: flex;
+  flex-direction: column;
+}
+.brand-title {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 16px;
+  letter-spacing: -0.4px;
+  color: var(--figma-primary);
+}
+.brand-sub {
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 12px;
+  color: var(--figma-text-sub);
+  margin-top: 2px;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.header-icon-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 9999px;
+  border: none;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+}
+.bell-badge-dot {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 8px;
+  height: 8px;
+  background-color: var(--figma-red);
+  border: 1px solid #fff;
+  border-radius: 9999px;
+}
+
+.header-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 9999px;
+  background: var(--figma-primary);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* =================================================== */
+/* Main View Area                                      */
+/* =================================================== */
+.figma-main {
+  flex: 1;
+  padding: 0 0 80px;
+  width: 100%;
+}
+
+/* =================================================== */
+/* Bottom Navigation Dock (64px, Glass, Figma Spec)    */
+/* =================================================== */
+.figma-bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 390px;
+  height: 64px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  box-shadow: var(--figma-shadow-nav-bottom);
+  border-top: 1px solid rgba(0, 33, 19, 0.06);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 0 4px calc(env(safe-area-inset-bottom) * 0.5);
+  z-index: 60;
+}
+
+.nav-tab-item {
+  flex: 1;
+  height: 44px;
+  border: none;
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  cursor: pointer;
+}
+
+.tab-icon-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tab-label {
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 14px;
+  color: var(--figma-text-sub);
+}
+.nav-tab-item.active .tab-label {
+  color: var(--figma-primary);
+  font-weight: 700;
+}
+
+.tab-counter-badge {
+  position: absolute;
+  top: -4px;
+  right: -8px;
+  background: var(--figma-primary);
+  color: #fff;
+  font-size: 9px;
+  font-weight: 700;
+  min-width: 15px;
+  height: 15px;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* =================================================== */
+/* Beranda (Home Page Sections)                        */
+/* =================================================== */
+.figma-home-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 12px 0 24px;
+}
+
+/* 1. Greeting Bar */
+.section-greeting-bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 16px 0;
+  width: 100%;
+  height: 52px;
+}
+
+.greeting-profile-group {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+}
+
+.greeting-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 9999px;
+  background: var(--figma-surface-mint);
+  box-shadow: var(--figma-shadow-card);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--figma-primary);
+}
+
+.greeting-text-col {
+  display: flex;
+  flex-direction: column;
+}
+.greeting-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.greeting-name {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 22px;
+  color: var(--figma-text-main);
+}
+.greeting-wave {
+  font-size: 14px;
+}
+.greeting-sub {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  color: var(--figma-text-sub);
+}
+
+.greeting-notif-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 9999px;
+  background: var(--figma-surface);
+  box-shadow: var(--figma-shadow-card);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+}
+.notif-red-dot {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 8px;
+  height: 8px;
+  background-color: var(--figma-red);
+  border: 1px solid #fff;
+  border-radius: 9999px;
+}
+
+/* 2. Interactive Search Bar */
+.section-search-bar-trigger {
+  padding: 0 16px;
+  width: 100%;
+}
+.interactive-search-form {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  height: 44px;
+}
+.search-pill-box {
+  flex: 1;
+  height: 44px;
+  background: var(--figma-surface);
+  box-shadow: var(--figma-shadow-card);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  padding: 0 14px;
+  gap: 10px;
+}
+.search-pill-box input {
+  width: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: inherit;
+  font-size: 14px;
+  line-height: 17px;
+  color: var(--figma-text-main);
+}
+.search-pill-box input::placeholder {
+  color: var(--figma-text-placeholder);
+}
+
+.search-filter-trigger-btn {
+  width: 44px;
+  height: 44px;
+  background: var(--figma-primary);
+  box-shadow: var(--figma-shadow-card);
+  border-radius: 12px;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.15s;
+}
+.search-filter-trigger-btn:active {
+  transform: scale(0.96);
+}
+
+/* 3. Promo Hero Card */
+.section-promo-hero {
+  padding: 0 16px;
+  width: 100%;
+}
+.promo-hero-card {
+  width: 100%;
+  background: linear-gradient(135deg, #174D35 0%, #174D35 50%, #0B261A 100%);
+  box-shadow: var(--figma-shadow-elevated);
+  border-radius: 16px;
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+  color: #fff;
+}
+.ambient-shape-glow {
+  position: absolute;
+  width: 144px;
+  height: 144px;
+  right: -32px;
+  top: -32px;
+  background: rgba(240, 159, 60, 0.15);
+  filter: blur(24px);
+  border-radius: 9999px;
+  pointer-events: none;
+}
+.promo-badge-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 2px 8px;
+  background: rgba(240, 159, 60, 0.2);
+  backdrop-filter: blur(4px);
+  border-radius: 9999px;
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 14px;
+  color: var(--figma-amber-soft);
+  margin-bottom: 10px;
+}
+.promo-title {
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 22px;
+  color: #FFFFFF;
+  margin-bottom: 6px;
+}
+.promo-sub {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  color: #9CD3B3;
+  margin-bottom: 16px;
+}
+.promo-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  background: var(--figma-amber-light);
+  box-shadow: var(--figma-shadow-card);
+  border-radius: 8px;
+  border: none;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 16px;
+  color: var(--figma-amber-darkest);
+  cursor: pointer;
+  transition: transform 0.15s;
+}
+.promo-cta-btn:active {
+  transform: scale(0.96);
+}
+
+/* 4. Section: Kategori Kos */
+.section-kategori-kos {
+  width: 100%;
+}
+.section-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 16px;
+  margin-bottom: 12px;
+}
+.section-heading-text {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 22px;
+  color: var(--figma-text-main);
+}
+.section-link-more {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 16px;
+  color: var(--figma-primary);
+  cursor: pointer;
+}
+.header-title-stack {
+  display: flex;
+  flex-direction: column;
+}
+.section-sub-text {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  color: var(--figma-text-sub);
+}
+
+.categories-grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  padding: 0 16px 4px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.category-pill-card {
+  width: 100%;
+  box-sizing: border-box;
+  min-height: 72px;
+  background: var(--figma-surface);
+  box-shadow: var(--figma-shadow-card);
+  border: 1px solid var(--figma-surface-mint-2);
+  border-radius: 14px;
+  padding: 10px 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 5px;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  min-width: 0;
+}
+.category-pill-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--figma-primary);
+  box-shadow: 0 4px 12px rgba(23, 77, 53, 0.12);
+}
+.category-pill-card:active {
+  transform: scale(0.96);
+}
+
+.category-icon-box {
+  width: 36px;
+  height: 36px;
+  background: var(--figma-surface-mint);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.category-text-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  gap: 2px;
+  min-width: 0;
+}
+
+.category-title {
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 14px;
+  color: var(--figma-text-main);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  text-align: center;
+}
+
+.category-sub {
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 13px;
+  color: var(--figma-primary);
+  background: var(--figma-surface-mint);
+  padding: 1px 7px;
+  border-radius: 9999px;
+  white-space: nowrap;
+  display: inline-block;
+  text-align: center;
+}
+
+/* 5. Rekomendasi Feed (Featured Card) */
+.section-rekomendasi-feed {
+  padding: 0 16px;
+  width: 100%;
+}
+.ai-match-badge {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 8px;
+  background: var(--figma-surface-mint-2);
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--figma-primary);
+}
+
+.featured-rec-card {
+  width: 100%;
+  background: var(--figma-surface);
+  box-shadow: var(--figma-shadow-card);
+  border-radius: 16px;
+  overflow: hidden;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.card-image-top {
+  position: relative;
+  width: 100%;
+  height: 176px;
+  background: var(--figma-surface-mint);
+  overflow: hidden;
+}
+.rec-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.gradient-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.2) 100%);
+  pointer-events: none;
+}
+
+.top-tags-left {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  z-index: 2;
+}
+.tag-type-white {
+  padding: 2px 10px;
+  background: #FFFFFF;
+  border-radius: 9999px;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 14px;
+  letter-spacing: 0.25px;
+  color: var(--figma-primary);
+}
+.tag-verified {
+  display: flex;
+  align-items: center;
+  padding: 2px 8px;
+  gap: 2px;
+  background: var(--figma-primary-light);
+  border-radius: 9999px;
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 14px;
+  color: var(--figma-primary-deep);
+}
+
+.top-tags-right {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  z-index: 2;
+}
+.glass-action-btn, .glass-icon-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  box-shadow: var(--figma-shadow-card);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.match-score-pill {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  display: flex;
+  align-items: center;
+  padding: 2px 10px;
+  gap: 4px;
+  background: rgba(23, 77, 53, 0.9);
+  backdrop-filter: blur(4px);
+  border-radius: 6px;
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 14px;
+  color: #9CD3B3;
+  z-index: 2;
+}
+
+.rec-card-body {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.body-top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.rec-card-title {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 22px;
+  color: var(--figma-text-main);
+  flex: 1;
+}
+.rating-pill {
+  display: flex;
+  align-items: center;
+  padding: 4px 8px;
+  gap: 4px;
+  background: var(--figma-surface-mint);
+  border-radius: 8px;
+  font-size: 12px;
+}
+.rating-pill b {
+  font-weight: 700;
+  color: var(--figma-text-main);
+}
+.review-count {
+  font-size: 12px;
+  color: var(--figma-text-sub);
+}
+
+.location-row {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.location-text {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  color: var(--figma-text-sub);
+}
+
+.facilities-pill-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  padding-top: 2px;
+}
+.amenity-chip {
+  display: flex;
+  align-items: center;
+  padding: 2px 8px;
+  gap: 4px;
+  background: var(--figma-surface-mint);
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 14px;
+  color: var(--figma-text-sub);
+}
+
+.rec-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 8px;
+  border-top: 1px solid var(--figma-surface-mint);
+  margin-top: 4px;
+}
+.footer-price-col {
+  display: flex;
+  flex-direction: column;
+}
+.price-lead-label {
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 14px;
+  color: var(--figma-text-sub);
+}
+.price-main-row {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+.price-amount {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 24px;
+  color: var(--figma-primary);
+}
+.price-freq {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  color: var(--figma-text-sub);
+}
+
+.btn-detail-small {
+  padding: 8px 14px;
+  background: var(--figma-primary);
+  box-shadow: var(--figma-shadow-card);
+  border-radius: 8px;
+  border: none;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+  color: #FFFFFF;
+  cursor: pointer;
+}
+
+/* 6. Kos Terbaru (Stack Horizontal) */
+.section-kos-terbaru {
+  width: 100%;
+}
+.recent-kos-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 0 16px;
+}
+
+.recent-kos-card {
+  width: 100%;
+  height: 120px;
+  background: var(--figma-surface);
+  box-shadow: var(--figma-shadow-card);
+  border-radius: 16px;
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+}
+
+.recent-thumb-wrapper {
+  position: relative;
+  width: 96px;
+  height: 96px;
+  border-radius: 12px;
+  overflow: hidden;
+  flex-shrink: 0;
+  background: var(--figma-surface-mint);
+}
+.recent-thumb-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.recent-type-overlay {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  padding: 2px 6px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 4px;
+  font-size: 9px;
+  font-weight: 600;
+  line-height: 14px;
+  color: var(--figma-primary);
+}
+
+.recent-info-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 96px;
+  padding: 2px 0;
+}
+.recent-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.recent-kos-title {
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 20px;
+  color: var(--figma-text-main);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 160px;
+}
+.recent-rating-badge {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  padding: 2px 6px;
+  background: var(--figma-amber-soft);
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--figma-amber-deep);
+}
+
+.recent-location-row {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  color: var(--figma-text-sub);
+}
+.recent-amenities-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.recent-mini-chip {
+  padding: 2px 6px;
+  background: var(--figma-surface-mint-2);
+  border-radius: 4px;
+  font-size: 10px;
+  color: var(--figma-text-sub);
+}
+.recent-price-row {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+.recent-price-val {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--figma-primary);
+}
+.recent-price-sub {
+  font-size: 12px;
+  color: var(--figma-text-sub);
+}
+
+/* 7. Campus Finder Strip */
+.section-campus-finder {
+  padding: 0 16px;
+  width: 100%;
+}
+.campus-finder-strip {
+  width: 100%;
+  height: 72px;
+  background: rgba(226, 234, 227, 0.6);
+  border-radius: 16px;
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+.campus-finder-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.campus-finder-icon-box {
+  width: 40px;
+  height: 40px;
+  background: var(--figma-primary);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.campus-finder-text-col {
+  display: flex;
+  flex-direction: column;
+}
+.campus-finder-title {
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 20px;
+  color: var(--figma-text-main);
+}
+.campus-finder-sub {
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--figma-text-sub);
+}
+.campus-finder-btn {
+  padding: 6px 12px;
+  background: #FFFFFF;
+  box-shadow: var(--figma-shadow-card);
+  border-radius: 8px;
+  border: none;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 16px;
+  color: var(--figma-primary);
+  cursor: pointer;
+}
+
+/* =================================================== */
+/* Jelajah Kos (Explore Page, Figma Spec)               */
+/* =================================================== */
+.figma-explore-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.explore-heading-section {
+  display: flex;
+  flex-direction: column;
+  padding: 12px 16px 4px;
+  gap: 8px;
+}
+.explore-main-heading {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 28px;
+  letter-spacing: -0.5px;
+  color: var(--figma-text-main);
+}
+.explore-subtitle {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  color: var(--figma-text-sub);
+}
+
+.interactive-search-bar {
+  display: flex;
+  align-items: center;
+  padding: 10px 16px;
+  gap: 8px;
+  background: var(--figma-surface);
+  box-shadow: var(--figma-shadow-card);
+  border-radius: 12px;
+  height: 44px;
+}
+.interactive-search-bar input {
+  width: 100%;
+  border: none;
+  outline: none;
+  font-family: inherit;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--figma-text-main);
+}
+.clear-search-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+}
+
+/* Chips Filter Section */
+.explore-filter-chips-section {
+  width: 100%;
+  padding: 4px 0;
+}
+.chips-scroll-container {
+  display: flex;
+  gap: 8px;
+  padding: 0 16px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.chips-scroll-container::-webkit-scrollbar {
+  display: none;
+}
+
+.filter-chip-pill {
+  flex: none;
+  height: 28px;
+  border-radius: 9999px;
+  border: none;
+  display: flex;
+  align-items: center;
+  padding: 6px 12px;
+  gap: 5px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  background: var(--figma-surface-mint-3);
+  color: var(--figma-primary);
+  transition: all 0.15s;
+}
+.filter-chip-pill.trigger {
+  background: var(--figma-primary);
+  color: #fff;
+  font-weight: 500;
+  box-shadow: var(--figma-shadow-card);
+}
+.filter-chip-pill.active {
+  background: var(--figma-primary-light);
+  color: var(--figma-primary-deep);
+}
+.chip-count-dot {
+  width: 14px;
+  height: 14px;
+  background: #fff;
+  color: var(--figma-primary);
+  border-radius: 9999px;
+  font-size: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+}
+
+/* Cards Feed Section */
+.explore-cards-feed-section {
+  padding: 0 16px;
+}
+.feed-cards-column {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.figma-listing-card {
+  width: 100%;
+  background: var(--figma-surface);
+  box-shadow: var(--figma-shadow-card);
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.listing-card-media {
+  position: relative;
+  width: 100%;
+  height: 176px;
+  background: var(--figma-surface-mint);
+}
+.listing-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.top-tags-row {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 2;
+}
+.tags-left, .tags-right {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.tag-pill-white {
+  padding: 2px 10px;
+  background: #FFFFFF;
+  border-radius: 9999px;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 14px;
+  letter-spacing: 0.25px;
+  color: var(--figma-primary);
+}
+.tag-pill-mint {
+  display: flex;
+  align-items: center;
+  padding: 2px 8px;
+  gap: 2px;
+  background: var(--figma-primary-light);
+  border-radius: 9999px;
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 14px;
+  color: var(--figma-primary-deep);
+}
+
+.room-availability-badge-overlay {
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+  z-index: 2;
+}
+.scarcity-badge-inner {
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 14px;
+  display: inline-block;
+}
+.scarcity-badge-inner.scarcity {
+  background: var(--figma-amber-soft);
+  color: var(--figma-amber-deep);
+  border-radius: 6px;
+  font-weight: 700;
+}
+.scarcity-badge-inner.normal {
+  background: rgba(23, 77, 53, 0.9);
+  color: #FFFFFF;
+  border-radius: 6px;
+  font-weight: 600;
+}
+
+.listing-card-body {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.body-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.listing-title {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 22px;
+  color: var(--figma-text-main);
+  flex: 1;
+}
+.rating-mini-box {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+}
+.rating-mini-box .rating-num {
+  font-weight: 700;
+  color: var(--figma-text-main);
+}
+.rating-mini-box .rating-review-count {
+  color: var(--figma-text-sub);
+}
+
+.listing-location-row {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.location-name {
+  font-size: 12px;
+  color: var(--figma-text-sub);
+}
+
+.listing-facilities-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  padding-top: 2px;
+}
+.listing-facility-pill {
+  display: flex;
+  align-items: center;
+  padding: 2px 8px;
+  gap: 4px;
+  background: var(--figma-surface-mint);
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 14px;
+  color: var(--figma-text-sub);
+}
+
+.listing-pricing-action-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 8px;
+}
+.pricing-col {
+  display: flex;
+  flex-direction: column;
+}
+.price-prefix {
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 14px;
+  color: var(--figma-text-sub);
+}
+.price-display-group {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+.price-bold {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 24px;
+  color: var(--figma-primary);
+}
+.price-unit {
+  font-size: 12px;
+  color: var(--figma-text-sub);
+}
+
+.btn-listing-action {
+  padding: 8px 14px;
+  background: var(--figma-primary);
+  box-shadow: var(--figma-shadow-card);
+  border-radius: 8px;
+  border: none;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+  color: #FFFFFF;
+  cursor: pointer;
+}
+
+/* =================================================== */
+/* Bandingkan Kos (Compare Page, Figma Spec)           */
+/* =================================================== */
+.figma-compare-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 12px 0 24px;
+}
+
+.compare-title-header {
+  padding: 0 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.context-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  gap: 6px;
+  background: var(--figma-surface-mint-2);
+  border-radius: 9999px;
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 14px;
+  letter-spacing: 0.25px;
+  color: var(--figma-primary);
+  align-self: flex-start;
+  margin-bottom: 2px;
+}
+.compare-heading {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 28px;
+  letter-spacing: -0.5px;
+  color: var(--figma-text-main);
+}
+.compare-subtext {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  color: var(--figma-text-sub);
+}
+
+/* Smart Recommendation Banner */
+.smart-rec-banner {
+  margin: 0 16px;
+  padding: 14px;
+  background: #EEF6EE;
+  border: 1px solid rgba(23, 77, 53, 0.12);
+  box-shadow: var(--figma-shadow-card);
+  border-radius: 12px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+.smart-rec-icon-circle {
+  width: 32px;
+  height: 32px;
+  background: var(--figma-primary-light);
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.smart-rec-content-col {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.smart-rec-badge {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 16px;
+  color: var(--figma-primary-dark);
+}
+.smart-rec-text {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 20px;
+  color: var(--figma-text-main);
+}
+
+/* Comparison Matrix */
+.comparison-matrix-section {
+  width: 100%;
+}
+.matrix-scroll-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 0 16px;
+}
+
+.matrix-headers-row {
+  display: flex;
+  gap: 8px;
+  align-items: flex-end;
+}
+.matrix-feature-label-cell {
+  width: 110px;
+  padding-bottom: 8px;
+}
+.item-fitur-title {
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 14px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--figma-text-muted);
+}
+
+.matrix-property-card {
+  flex: 1;
+  background: var(--figma-surface);
+  box-shadow: var(--figma-shadow-card);
+  border-radius: 12px;
+  padding: 8px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+.property-delete-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 24px;
+  height: 24px;
+  background: rgba(244, 251, 244, 0.85);
+  box-shadow: var(--figma-shadow-card);
+  backdrop-filter: blur(8px);
+  border-radius: 9999px;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.property-thumb-box {
+  position: relative;
+  width: 100%;
+  height: 96px;
+  background: var(--figma-surface-mint);
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+.property-thumb-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.property-type-pill {
+  position: absolute;
+  bottom: 6px;
+  left: 6px;
+  padding: 1px 6px;
+  background: rgba(221, 229, 221, 0.9);
+  backdrop-filter: blur(8px);
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 15px;
+  color: var(--figma-primary-dark);
+}
+
+.property-name {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 16px;
+  color: var(--figma-text-main);
+  cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.property-area {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  color: var(--figma-text-sub);
+}
+
+.add-slot-trigger-row {
+  width: 100%;
+}
+.add-slot-btn {
+  width: 100%;
+  height: 32px;
+  background: var(--figma-surface-mint-2);
+  border-radius: 8px;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--figma-primary-dark);
+  cursor: pointer;
+}
+
+/* Data Sections */
+.matrix-data-section {
+  background: var(--figma-surface);
+  box-shadow: var(--figma-shadow-card);
+  border-radius: 8px;
+  padding: 10px 12px;
+  display: flex;
+  align-items: center;
+}
+.matrix-data-section.subtle {
+  background: #EEF6EE;
+  box-shadow: none;
+  border: 1px solid rgba(0, 33, 19, 0.05);
+}
+.data-row-label {
+  width: 110px;
+}
+.data-label-text {
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 14px;
+  color: var(--figma-text-main);
+}
+.data-row-values {
+  flex: 1;
+  display: flex;
+  gap: 8px;
+}
+.data-val-cell {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.price-big {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--figma-primary-dark);
+}
+.price-sub-label {
+  font-size: 10px;
+  color: var(--figma-text-sub);
+}
+.best-price-badge {
+  display: inline-block;
+  align-self: flex-start;
+  margin-top: 4px;
+  padding: 1px 6px;
+  background: var(--figma-primary-light);
+  border-radius: 9999px;
+  font-size: 9px;
+  font-weight: 600;
+  color: var(--figma-primary-deep);
+}
+.rating-inline {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--figma-text-main);
+}
+.data-main-text {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--figma-text-main);
+}
+.data-sub-text {
+  font-size: 10px;
+  color: var(--figma-text-sub);
+}
+.gender-pill {
+  display: inline-block;
+  align-self: flex-start;
+  padding: 1px 8px;
+  background: var(--figma-surface-mint-3);
+  border-radius: 6px;
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--figma-primary-dark);
+}
+.text-green { color: var(--figma-primary-dark); font-size: 12px; }
+.text-red { color: var(--figma-red); font-size: 12px; }
+.feature-status-check {
+  font-size: 11px;
+  font-weight: 600;
+}
+.feature-status-check.yes { color: var(--figma-primary-dark); }
+.feature-status-check.no { color: var(--figma-text-sub); }
+
+.action-buttons-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.compare-btn-select {
+  padding: 8px 10px;
+  background: var(--figma-primary);
+  color: #FFFFFF;
+  border: none;
+  border-radius: 8px;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+.compare-btn-select:hover {
+  opacity: 0.9;
+}
+.compare-btn-detail {
+  padding: 6px 10px;
+  background: transparent;
+  color: var(--figma-primary);
+  border: 1px solid var(--figma-primary);
+  border-radius: 8px;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.compare-bottom-helper-card {
+  margin: 16px;
+  padding: 12px 14px;
+  background: #E8F0E9;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.helper-card-content {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.helper-card-icon {
+  font-size: 18px;
+}
+.helper-card-text {
+  display: flex;
+  flex-direction: column;
+  font-size: 11px;
+  color: var(--figma-text-sub);
+}
+.helper-card-text b {
+  color: var(--figma-text-main);
+  font-size: 12px;
+}
+.helper-card-cta {
+  padding: 6px 14px;
+  background: var(--figma-primary);
+  color: #FFFFFF;
+  border: none;
+  border-radius: 8px;
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+/* =================================================== */
+/* Detail & Room Pages (Matching Theme)                */
+/* =================================================== */
+.figma-detail-wrapper, .figma-room-wrapper, .figma-profile-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.figma-favorites-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+.detail-media-container {
+  position: relative;
+  width: 100%;
+  height: 220px;
+  background: var(--figma-surface-mint);
+}
+.detail-cover-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.detail-type-badge {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  padding: 4px 12px;
+  background: #FFFFFF;
+  border-radius: 9999px;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--figma-primary);
+  z-index: 2;
+}
+
+.detail-header-card, .detail-content-block {
+  margin: 0 16px;
+  padding: 16px;
+  background: var(--figma-surface);
+  box-shadow: var(--figma-shadow-card);
+  border-radius: 12px;
+}
+
+.detail-name {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--figma-text-main);
+  margin-bottom: 4px;
+}
+.detail-location-row {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  color: var(--figma-text-sub);
+  margin-bottom: 14px;
+}
+
+.detail-actions-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.detail-action-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  background: var(--figma-surface-mint);
+  border-radius: 8px;
+  border: none;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--figma-text-main);
+  cursor: pointer;
+}
+.detail-action-pill.active-fav {
+  background: #FEE2E2;
+  color: var(--figma-red);
+}
+.detail-action-pill.active-cmp {
+  background: var(--figma-primary-light);
+  color: var(--figma-primary-deep);
+}
+.detail-whatsapp-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  background: #25D366;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.block-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--figma-text-main);
+  margin-bottom: 10px;
+}
+.block-text {
+  font-size: 12px;
+  line-height: 18px;
+  color: var(--figma-text-sub);
+}
+
+.facility-chips-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.detail-facility-chip {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  background: var(--figma-surface-mint);
+  border-radius: 9999px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--figma-primary);
+}
+
+.rooms-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.room-card-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 12px;
+  background: var(--figma-bg);
+  border-radius: 8px;
+  cursor: pointer;
+}
+.room-card-name {
+  font-size: 13px;
+  color: var(--figma-text-main);
+  display: block;
+}
+.room-card-size {
+  font-size: 11px;
+  color: var(--figma-text-sub);
+}
+.room-card-right {
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+.room-card-price {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--figma-primary);
+}
+.room-card-price small {
+  font-size: 10px;
+  color: var(--figma-text-sub);
+}
+.room-card-status {
+  font-size: 10px;
+  font-weight: 600;
+}
+.room-card-status.available { color: var(--figma-primary); }
+.room-card-status.occupied { color: var(--figma-text-sub); }
+
+/* Room View */
+.room-hero-banner {
+  margin: 12px 16px 0;
+  background: var(--figma-primary);
+  border-radius: 12px;
+  padding: 20px;
+  color: #fff;
+}
+.room-banner-pill {
+  display: inline-block;
+  padding: 2px 8px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 9999px;
+  font-size: 10px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+.room-banner-title {
+  font-size: 18px;
+  font-weight: 700;
+}
+.room-banner-price {
+  font-size: 16px;
+  font-weight: 700;
+  margin-top: 4px;
+}
+.room-specs-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+.spec-item {
+  background: var(--figma-bg);
+  padding: 8px 10px;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+}
+.spec-label {
+  font-size: 9px;
+  color: var(--figma-text-sub);
+  text-transform: uppercase;
+}
+.spec-val {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--figma-text-main);
+}
+.parent-kos-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--figma-primary);
+  cursor: pointer;
+}
+.parent-kos-address {
+  font-size: 12px;
+  color: var(--figma-text-sub);
+}
+
+/* =================================================== */
+/* Auth & Profile                                      */
+/* =================================================== */
+.figma-auth-screen {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 16px;
+  background: var(--figma-bg);
+}
+.figma-auth-card {
+  width: 100%;
+  max-width: 358px;
+  background: #FFFFFF;
+  box-shadow: var(--figma-shadow-card);
+  border-radius: 16px;
+  padding: 28px 20px;
+}
+.auth-brand-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.auth-brand-logo {
+  font-size: 2.2rem;
+  margin-bottom: 6px;
+}
+.auth-brand-header h2 {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--figma-primary);
+}
+.auth-brand-sub {
+  font-size: 12px;
+  color: var(--figma-text-sub);
+  margin-top: 4px;
+}
+
+.auth-pill-switch {
+  display: flex;
+  background: var(--figma-surface-mint);
+  border-radius: 8px;
+  padding: 3px;
+  margin-bottom: 18px;
+}
+.pill-tab {
+  flex: 1;
+  padding: 8px 0;
+  border: none;
+  background: transparent;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--figma-text-sub);
+  border-radius: 6px;
+  cursor: pointer;
+}
+.pill-tab.active {
+  background: #FFFFFF;
+  color: var(--figma-primary);
+  box-shadow: var(--figma-shadow-card);
+  font-weight: 700;
+}
+
+.figma-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.figma-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.figma-input-group label {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--figma-text-main);
+}
+.figma-input-group input {
+  padding: 10px 12px;
+  background: #FFFFFF;
+  border: 1px solid var(--figma-surface-mint-3);
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 13px;
+  color: var(--figma-text-main);
+}
+.figma-input-group input:focus {
+  outline: none;
+  border-color: var(--figma-primary);
+}
+
+.figma-btn-primary {
+  width: 100%;
+  padding: 11px;
+  background: var(--figma-primary);
+  box-shadow: var(--figma-shadow-card);
+  border-radius: 8px;
+  border: none;
+  color: #FFFFFF;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 6px;
+}
+.figma-btn-primary:disabled {
+  opacity: 0.6;
+}
+
+.auth-card-footer {
+  text-align: center;
+  font-size: 12px;
+  color: var(--figma-text-sub);
+  margin-top: 16px;
+}
+.auth-link-button {
+  background: transparent;
+  border: none;
+  color: var(--figma-primary);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* Profile */
+.profile-edit-card {
+  margin: 0 16px;
+  padding: 20px;
+  background: #FFFFFF;
+  box-shadow: var(--figma-shadow-card);
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.profile-large-avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 9999px;
+  background: var(--figma-primary);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+.profile-display-name {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--figma-text-main);
+}
+.profile-display-email {
+  font-size: 12px;
+  color: var(--figma-text-sub);
+}
+.btn-logout-card {
+  margin: 0 16px;
+  padding: 10px;
+  background: #FEE2E2;
+  border: none;
+  border-radius: 8px;
+  color: var(--figma-red);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* Common UI */
+.figma-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  gap: 10px;
+  color: var(--figma-text-sub);
+  font-size: 12px;
+}
+.figma-spinner {
+  width: 24px;
+  height: 24px;
+  border: 2px solid var(--figma-surface-mint-2);
+  border-top-color: var(--figma-primary);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.figma-error-banner {
+  background: #FEE2E2;
+  color: var(--figma-red);
+  padding: 10px 12px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+}
+.figma-success-banner {
+  background: var(--figma-primary-light);
+  color: var(--figma-primary-deep);
+  padding: 10px 12px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.compare-empty-box {
+  margin: 0 16px;
+  padding: 32px 16px;
+  background: #FFFFFF;
+  border-radius: 12px;
+  box-shadow: var(--figma-shadow-card);
+  text-align: center;
+}
+.empty-circle-icon {
+  font-size: 2rem;
+  margin-bottom: 8px;
+}
+.compare-empty-box h3 {
+  font-size: 15px;
+  color: var(--figma-text-main);
+  margin-bottom: 6px;
+}
+.compare-empty-box p {
+  font-size: 12px;
+  line-height: 18px;
+  color: var(--figma-text-sub);
+}
+
+/* =================================================== */
+/* Floating Toast Banner                               */
+/* =================================================== */
+.figma-toast-banner {
+  position: fixed;
+  top: 76px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--figma-primary);
+  color: #FFFFFF;
+  padding: 10px 20px;
+  border-radius: 9999px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
+  font-size: 12px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  z-index: 100;
+  animation: figmaToastIn 0.25s ease-out;
+  pointer-events: none;
+  max-width: 90%;
+  text-align: center;
+}
+
+@keyframes figmaToastIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -10px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+/* =================================================== */
+/* Pagination Controls                                 */
+/* =================================================== */
+.pagination-info-strip {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 4px 12px;
+  font-size: 11px;
+  color: var(--figma-text-sub);
+}
+.pagination-info-strip b {
+  color: var(--figma-primary);
+  font-weight: 700;
+}
+.page-indicator-pill {
+  padding: 3px 10px;
+  background: var(--figma-surface-mint);
+  border-radius: 9999px;
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--figma-primary-deep);
+}
+
+.figma-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin: 18px 0 8px;
+  padding: 10px 12px;
+  background: #FFFFFF;
+  border-radius: 14px;
+  box-shadow: var(--figma-shadow-card);
+}
+
+.pagination-btn.arrow {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 14px;
+  background: var(--figma-surface-mint);
+  border: none;
+  border-radius: 8px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--figma-primary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.pagination-btn.arrow:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  background: var(--figma-surface-mint-2);
+  color: var(--figma-text-placeholder);
+}
+.pagination-btn.arrow:not(:disabled):hover {
+  background: var(--figma-primary-light);
+}
+
+.pagination-numbers {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.page-num-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  background: transparent;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--figma-text-main);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+.page-num-btn:hover {
+  background: var(--figma-surface-mint);
+}
+.page-num-btn.active {
+  background: var(--figma-primary);
+  color: #FFFFFF;
+  font-weight: 700;
+  box-shadow: 0 2px 6px rgba(23, 77, 53, 0.25);
+}
+
+/* =================================================== */
+/* Share Link Components                               */
+/* =================================================== */
+.detail-top-floating-btns {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  z-index: 5;
+}
+
+.share-block {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.share-header-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.share-icon-circle {
+  width: 38px;
+  height: 38px;
+  border-radius: 9999px;
+  background: var(--figma-surface-mint);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.share-sub {
+  font-size: 11px;
+  color: var(--figma-text-sub);
+  margin-top: 2px;
+}
+.share-btn-group {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+}
+.btn-share-whatsapp {
+  flex: 1.2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  background: #25D366;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 12px;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(37, 211, 102, 0.2);
+  transition: background 0.2s;
+}
+.btn-share-whatsapp:hover {
+  background: #20BD5A;
+}
+.btn-share-copy {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  background: var(--figma-surface-mint);
+  color: var(--figma-primary);
+  border: 1px solid var(--figma-surface-mint-3);
+  border-radius: 10px;
+  padding: 10px 12px;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.btn-share-copy:hover {
+  background: var(--figma-primary-light);
+  border-color: var(--figma-primary);
+}
+
+/* =================================================== */
+/* Profile Avatar Custom Image Upload                  */
+/* =================================================== */
+.header-avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 9999px;
+  display: block;
+}
+
+.greeting-avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 9999px;
+  display: block;
+}
+
+.profile-avatar-container {
+  position: relative;
+  width: 88px;
+  height: 88px;
+  margin: 0 auto 12px;
+}
+
+.profile-large-avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 9999px;
+  display: block;
+  border: 3px solid #FFFFFF;
+  box-shadow: 0 4px 12px rgba(23, 77, 53, 0.15);
+}
+
+.profile-avatar-badge {
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  width: 30px;
+  height: 30px;
+  border-radius: 9999px;
+  background: var(--figma-primary);
+  border: 2px solid #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  transition: transform 0.15s ease, background 0.2s ease;
+}
+.profile-avatar-badge:hover {
+  transform: scale(1.08);
+  background: var(--figma-primary-deep);
+}
+
+.profile-avatar-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.btn-upload-photo-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  background: var(--figma-surface-mint);
+  border: 1px solid var(--figma-surface-mint-3);
+  border-radius: 9999px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--figma-primary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.btn-upload-photo-label:hover {
+  background: var(--figma-primary-light);
+  border-color: var(--figma-primary);
+}
+
+.btn-remove-photo {
+  background: transparent;
+  border: none;
+  font-size: 11px;
+  color: #BA1A1A;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 4px 8px;
+  text-decoration: underline;
+}
+.btn-remove-photo:hover {
+  opacity: 0.8;
+}
+
+/* Profile Post Kos Shortcut */
+.post-kos-shortcut-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 16px;
+  padding: 14px 16px;
+  background: linear-gradient(135deg, #FFFFFF 0%, #F4FBF4 100%);
+  border: 1.5px dashed var(--figma-primary-light);
+  border-radius: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.post-kos-shortcut-card:hover {
+  border-color: var(--figma-primary);
+  transform: translateY(-2px);
+  box-shadow: var(--figma-shadow-card);
+}
+.shortcut-icon-box {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: var(--figma-surface-mint);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.shortcut-text-col {
+  flex: 1;
+}
+.shortcut-title {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--figma-text-main);
+}
+.shortcut-desc {
+  margin: 2px 0 0;
+  font-size: 11px;
+  color: var(--figma-text-sub);
+  line-height: 1.4;
+}
+.shortcut-arrow {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--figma-primary);
+}
+
+/* =================================================== */
+/* Home & Explore Post Kos Shortcuts                   */
+/* =================================================== */
+.section-post-kos-home {
+  padding: 6px 16px 12px;
+}
+.post-kos-home-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 16px;
+  background: linear-gradient(135deg, #174D35 0%, #002113 100%);
+  border-radius: 16px;
+  color: #FFFFFF;
+  box-shadow: 0 4px 14px rgba(23, 77, 53, 0.2);
+}
+.post-kos-home-text {
+  flex: 1;
+}
+.post-kos-home-tag {
+  display: inline-block;
+  padding: 2px 8px;
+  background: rgba(255, 255, 255, 0.18);
+  border-radius: 9999px;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+  color: #BFF0D2;
+  margin-bottom: 4px;
+}
+.post-kos-home-title {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 700;
+  color: #FFFFFF;
+}
+.post-kos-home-desc {
+  margin: 2px 0 0;
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.35;
+}
+.btn-post-kos-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 9px 13px;
+  background: #3B7E58;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 10px;
+  color: #FFFFFF;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+}
+.btn-post-kos-cta:hover {
+  background: #479267;
+  transform: translateY(-1px);
+}
+
+/* Explore Top Row */
+.explore-heading-top-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+}
+.btn-post-kos-small {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 7px 12px;
+  background: var(--figma-surface-mint);
+  border: 1px solid var(--figma-surface-mint-3);
+  border-radius: 10px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--figma-primary);
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+}
+.btn-post-kos-small:hover {
+  background: var(--figma-primary-light);
+  border-color: var(--figma-primary);
+  transform: translateY(-1px);
+}
+
+/* =================================================== */
+/* Post Kos Form & Components                          */
+/* =================================================== */
+.figma-post-kos-wrapper {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 24px;
+}
+.post-kos-form-card {
+  background: #FFFFFF;
+  border-radius: 18px;
+  padding: 18px 16px;
+  margin: 0 16px 20px;
+  box-shadow: var(--figma-shadow-card);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.post-kos-section-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--figma-surface-mint-2);
+}
+.post-kos-section-group:last-of-type {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+.section-group-label {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--figma-primary);
+}
+.section-group-hint {
+  margin: -4px 0 6px;
+  font-size: 11px;
+  color: var(--figma-text-sub);
+}
+
+/* Upload dropzone */
+.post-kos-upload-dropzone {
+  width: 100%;
+  margin-top: 4px;
+}
+.upload-placeholder-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 24px 16px;
+  background: var(--figma-surface-mint);
+  border: 2px dashed var(--figma-surface-mint-3);
+  border-radius: 14px;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.2s ease;
+}
+.upload-placeholder-box:hover {
+  border-color: var(--figma-primary);
+  background: var(--figma-primary-light);
+}
+.upload-icon-circle {
+  width: 48px;
+  height: 48px;
+  border-radius: 9999px;
+  background: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+.upload-main-text {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--figma-primary);
+}
+.upload-sub-text {
+  font-size: 10px;
+  color: var(--figma-text-placeholder);
+}
+
+.preview-image-container {
+  position: relative;
+  width: 100%;
+  height: 180px;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: var(--figma-shadow-card);
+}
+.preview-kos-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.btn-remove-preview-img {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 28px;
+  height: 28px;
+  border-radius: 9999px;
+  background: rgba(0, 0, 0, 0.6);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  backdrop-filter: blur(4px);
+  transition: background 0.2s;
+}
+.btn-remove-preview-img:hover {
+  background: rgba(186, 26, 26, 0.85);
+}
+
+/* Preset photos picker */
+.preset-photos-picker {
+  margin-top: 8px;
+}
+.preset-label {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--figma-text-sub);
+}
+.preset-photos-row {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 6px 0;
+  scrollbar-width: none;
+}
+.preset-photos-row::-webkit-scrollbar {
+  display: none;
+}
+.preset-thumb-btn {
+  flex-shrink: 0;
+  width: 72px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  background: #FFFFFF;
+  padding: 3px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.preset-thumb-btn img {
+  width: 100%;
+  height: 48px;
+  object-fit: cover;
+  border-radius: 7px;
+}
+.preset-thumb-btn span {
+  font-size: 9px;
+  color: var(--figma-text-sub);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: center;
+}
+.preset-thumb-btn.selected {
+  border-color: var(--figma-primary);
+  background: var(--figma-surface-mint);
+}
+
+/* Two column layout inside post form */
+.form-two-cols {
+  display: flex;
+  gap: 10px;
+}
+.form-two-cols .figma-input-group {
+  flex: 1;
+}
+
+.price-preview-hint {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--figma-primary);
+  margin-top: 3px;
+}
+
+/* Facilities checkbox grid */
+.facilities-checkbox-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  margin-top: 4px;
+}
+.facility-check-chip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  background: var(--figma-surface-mint);
+  border: 1px solid var(--figma-surface-mint-2);
+  border-radius: 10px;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.facility-check-chip:hover {
+  background: var(--figma-primary-light);
+}
+.facility-check-chip.checked {
+  background: #FFFFFF;
+  border-color: var(--figma-primary);
+  box-shadow: 0 1px 4px rgba(23, 77, 53, 0.12);
+}
+.checkbox-square {
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+  border: 1.5px solid var(--figma-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: 800;
+  color: #FFFFFF;
+  background: transparent;
+  flex-shrink: 0;
+}
+.facility-check-chip.checked .checkbox-square {
+  background: var(--figma-primary);
+}
+.chip-label-text {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--figma-text-main);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.facility-check-chip.checked .chip-label-text {
+  font-weight: 600;
+  color: var(--figma-primary);
+}
+
+/* Actions */
+.form-action-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 6px;
+}
+.btn-cancel-post {
+  flex: 1;
+  padding: 12px 16px;
+  background: var(--figma-surface-mint);
+  border: 1px solid var(--figma-surface-mint-3);
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--figma-text-sub);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.btn-cancel-post:hover {
+  background: var(--figma-surface-mint-2);
+  color: var(--figma-text-main);
+}
+.form-action-row .figma-btn-primary {
+  flex: 2;
+}
