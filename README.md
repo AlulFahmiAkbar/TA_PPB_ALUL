@@ -67,13 +67,4 @@ npm run build
 
 ---
 
-## ☁️ Deploy ke Vercel
 
-Proyek ini telah dikonfigurasi sebagai **Single Fullstack Project**:
-1. Hubungkan repository GitHub ke Vercel.
-2. Vercel akan otomatis mengenali proyek ini sebagai **Vite** di root (`./`).
-3. Tambahkan Environment Variables di Vercel:
-   - `SUPABASE_URL`
-   - `SUPABASE_SERVICE_KEY`
-   - `JWT_SECRET`
-4. Klik **Deploy** — Vercel akan otomatis mendeploy frontend dan API serverless dalam satu domain tanpa perlu konfigurasi tambahan!
