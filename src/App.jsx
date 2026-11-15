@@ -42,20 +42,28 @@ export default function App() {
   const [toast, setToast] = useState('')
   const view = stack[stack.length - 1]
 
-  // Auto-sync / refresh user profile from server in background on startup
+  // Auto-sync / refresh user profile & avatar from server in background on startup and window focus
   useEffect(() => {
-    if (authed) {
+    if (!authed) return
+    const syncProfile = () => {
       api.get('/auth/me').then((u) => {
         if (u) {
           setUser(u)
           setCurrentUser(u)
-          if (u.avatar) {
-            setUserAvatar(u.avatar)
-            localStorage.setItem('kostara_user_avatar', u.avatar)
+          const ava = u.avatar || ''
+          setUserAvatar(ava)
+          if (ava) {
+            localStorage.setItem('kostara_user_avatar', ava)
+          } else {
+            localStorage.removeItem('kostara_user_avatar')
           }
         }
       }).catch(() => {})
     }
+
+    syncProfile()
+    window.addEventListener('focus', syncProfile)
+    return () => window.removeEventListener('focus', syncProfile)
   }, [authed])
 
   const showToast = (msg) => {

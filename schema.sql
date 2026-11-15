@@ -1,6 +1,9 @@
 -- Jalankan di Supabase > SQL Editor
-create table users (id uuid primary key default gen_random_uuid(), name varchar not null, email varchar unique not null,
-  password text not null, role varchar default 'user', phone varchar, created_at timestamptz default now());
+create table if not exists users (id uuid primary key default gen_random_uuid(), name varchar not null, email varchar unique not null,
+  password text not null, role varchar default 'user', phone varchar, avatar text, created_at timestamptz default now());
+
+-- Pastikan kolom avatar tersedia jika tabel users dibuat sebelumnya
+ALTER TABLE users ADD COLUMN IF NOT EXISTS avatar text;
 create table kos (id uuid primary key default gen_random_uuid(), name varchar not null, description text, address text,
   area varchar, latitude decimal, longitude decimal, kos_type varchar check (kos_type in ('Putra','Putri','Campur')),
   owner_name varchar, owner_phone varchar, image_url text, created_at timestamptz default now());

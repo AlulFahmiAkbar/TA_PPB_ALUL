@@ -161,7 +161,7 @@ export function Login({ onAuth }) {
           setUser(me)
           if (me.avatar) localStorage.setItem('kostara_user_avatar', me.avatar)
         }
-      } catch {}
+      } catch { }
       onAuth()
     } catch (x) {
       setErr(x.message)
@@ -258,7 +258,7 @@ export function Login({ onAuth }) {
 // ---------------- Beranda (Home Page) ----------------
 export function Home({ go, tab, cmp = [], toggleCmp, showToast, userAvatar, currentUser, setCurrentUser }) {
   const latest = useFetch(() => api.get('/kos'))
-  
+
   // Instant synchronous user resolution from prop or localStorage (0 ms delay on reload)
   const activeUser = currentUser || getUser()
   const [user, setUserState] = useState(activeUser)
@@ -275,7 +275,7 @@ export function Home({ go, tab, cmp = [], toggleCmp, showToast, userAvatar, curr
         setUserState(data)
         if (setCurrentUser) setCurrentUser(data)
       }
-    }).catch(() => {})
+    }).catch(() => { })
     return () => { live = false }
   }, [setCurrentUser])
 
@@ -409,10 +409,6 @@ export function Home({ go, tab, cmp = [], toggleCmp, showToast, userAvatar, curr
             <h3 className="section-heading-text">Rekomendasi Untukmu</h3>
             <span className="section-sub-text">Sesuai preferensi jarak & budgetmu</span>
           </div>
-          <span className="ai-match-badge">
-            <IconSparkles size={11} color="#174D35" />
-            <span>AI Match</span>
-          </span>
         </div>
 
         <State s={latest}>
@@ -464,11 +460,6 @@ export function Home({ go, tab, cmp = [], toggleCmp, showToast, userAvatar, curr
                     >
                       <IconHeart size={14} filled={isFav} />
                     </button>
-                  </div>
-
-                  <div className="match-score-pill">
-                    <IconSparkles size={10} color="#002113" />
-                    <span>98% Cocok Sesuai Budget</span>
                   </div>
                 </div>
 
@@ -1173,7 +1164,7 @@ export function Detail({ id, go, cmp = [], toggleCmp, showToast }) {
               <img src={getRoomImage(k.image_url)} alt={k.name} className="detail-cover-img" />
               <div className="gradient-overlay"></div>
               <span className="detail-type-badge">{k.kos_type}</span>
-              
+
               <div className="detail-top-floating-btns">
                 <button
                   className="glass-icon-btn"
@@ -1509,10 +1500,15 @@ export function Profile({ logout, go, userAvatar, setUserAvatar, showToast, curr
       setForm({ name: s.data.name, phone: s.data.phone || '' })
       setUser(s.data)
       if (setCurrentUser) setCurrentUser(s.data)
-      if (s.data.avatar && !avatar) {
-        setAvatar(s.data.avatar)
-        localStorage.setItem('kostara_user_avatar', s.data.avatar)
-        if (setUserAvatar) setUserAvatar(s.data.avatar)
+      if (s.data.avatar !== undefined) {
+        const freshAvatar = s.data.avatar || ''
+        setAvatar(freshAvatar)
+        if (setUserAvatar) setUserAvatar(freshAvatar)
+        if (freshAvatar) {
+          localStorage.setItem('kostara_user_avatar', freshAvatar)
+        } else {
+          localStorage.removeItem('kostara_user_avatar')
+        }
       }
     }
   }, [s.data])
@@ -1531,7 +1527,7 @@ export function Profile({ logout, go, userAvatar, setUserAvatar, showToast, curr
       if (setCurrentUser) setCurrentUser(updatedUser)
       try {
         await api.put('/auth/profile', { name: form?.name || s.data?.name, phone: form?.phone || '', avatar: compressed })
-      } catch {}
+      } catch { }
       if (showToast) showToast('✓ Foto profil berhasil diperbarui!')
       else setMsg('Foto profil berhasil diperbarui ✓')
     } catch (err) {
@@ -1550,7 +1546,7 @@ export function Profile({ logout, go, userAvatar, setUserAvatar, showToast, curr
     if (setCurrentUser) setCurrentUser(updatedUser)
     try {
       await api.put('/auth/profile', { name: form?.name || s.data?.name, phone: form?.phone || '', avatar: '' })
-    } catch {}
+    } catch { }
     if (showToast) showToast('Foto profil dihapus')
   }
 
@@ -1922,12 +1918,13 @@ export function PostKos({ go, back, tab, showToast }) {
           </div>
 
           <div className="figma-input-group">
-            <label>Alamat Lengkap</label>
+            <label>Alamat Lengkap *</label>
             <input
               type="text"
-              placeholder="Jl. Prof. Sudarto No. 12, Tembalang"
+              placeholder="Contoh: Jl. Prof. Sudarto No. 12, Tembalang"
               value={form.address}
               onChange={(e) => setForm({ ...form, address: e.target.value })}
+              required
             />
           </div>
 
